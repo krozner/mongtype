@@ -235,11 +235,11 @@ export class MongoRepository<T> {
    * Return a collection
    * If the collection doesn't exist, it will create it with the given options
    *
-   * @private
+   * @protected
    * @returns {Promise<Collection<T>>}
    * @memberof MongoRepository
    */
-  private getCollection(): Promise<Collection<T>> {
+  protected getCollection(): Promise<Collection<T>> {
     return new Promise<Collection<T>>(async (resolve, reject) => {
       const db = await this.dbSource.db;
       db.collection(this.options.name, { strict: true }, async (err, collection) => {
